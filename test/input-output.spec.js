@@ -74,10 +74,10 @@ const testCases = (directory) => {
 /**
  * Main mocha process
  */
-describe('MJML engine.mjml2html test', () => {
+describe('MJML to HTML translation', () => {
 
   // Compares mjml/html files in the assets folder
-  describe('raw translation', () => {
+  describe('Pre-defined templates', () => {
     testCases('./assets').map(compare => compare(engine.mjml2html))
   })
 
@@ -90,24 +90,4 @@ describe('MJML engine.mjml2html test', () => {
     })
 
   })
-
-  describe('Register a component', () => {
-    it('should return true when registering a new component', () => {
-      expect(engine.registerElement('mock', {})).to.be.true
-    })
-
-    it('should return true when forcing to register an already registered component', () => {
-      const htmlElement = {}
-      expect(engine.registerElement('html', htmlElement, { force : true })).to.be.true
-      expect(engine.elements.html).to.be.equal(htmlElement)
-    })
-
-    it('return false when registering an already registered component', () => {
-      const htmlElement = {}
-      const originalHtmlElement = engine.elements.html
-      expect(engine.registerElement('html', htmlElement)).to.be.false
-      expect(engine.elements.html).to.be.equal(originalHtmlElement)
-    })
-  })
-
 })
