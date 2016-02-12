@@ -65,13 +65,19 @@ class Button extends Component {
   renderButton() {
     const { mjContent, mjAttribute } = this.props
 
+    let innerHtml = mjContent();
+
+    if (mjAttribute('icon')) {
+      innerHtml = "<i style=\"padding-right: 6px;\" class=\"fa fa-" + mjAttribute('icon') + "\"></i>" + innerHtml
+    }
+
     return (
-      <a
-        className="mj-content"
-        dangerouslySetInnerHTML={{ __html: mjContent() }}
-        href={mjAttribute('href')}
-        style={this.styles.a}
-        target="_blank" />
+        <a
+            className="mj-content"
+            dangerouslySetInnerHTML={{ __html: innerHtml }}
+            href={mjAttribute('href')}
+            style={this.styles.a}
+            target="_blank" />
     )
   }
 

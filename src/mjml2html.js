@@ -196,6 +196,7 @@ const internals = {
     }
   </style>
   <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300" rel="stylesheet" type="text/css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.css" rel="stylesheet" type="text/css">
   <!--<![endif]-->
 </head>
 <body id="YIELD_MJML">
