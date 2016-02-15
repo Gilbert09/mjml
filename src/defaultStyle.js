@@ -1,4 +1,5 @@
 export default `
+  body { font-family: Verdana; }
   #outlook a { padding: 0; }
   .ReadMsgBody { width: 100%; }
   .ExternalClass { width: 100%; }
