@@ -18,8 +18,7 @@ class Section extends Component {
 
   static baseStyles = {
     div: {
-      margin: "0 auto",
-      maxWidth: "600px"
+      margin: "0 auto"
     },
     table: {
       width: "100%",
@@ -43,13 +42,10 @@ class Section extends Component {
     const background = mjAttribute('background-url') ? {
       background: `url(${mjAttribute('background-url')}) top center / ${mjAttribute('background-size') || ''} ${mjAttribute('background-repeat') || ''}`
     } : {
-      backgroundColor: mjAttribute('background-color')
+      background: mjAttribute('background-color')
     }
 
     return _.merge({}, this.constructor.baseStyles, {
-      div: this.isFullWidth() ? {} : _.cloneDeep(background),
-      table: this.isFullWidth() ? {} : _.cloneDeep(background),
-      tableFullwidth: this.isFullWidth() ? _.cloneDeep(background) : {},
       td: {
         fontSize: 0,
         verticalAlign: mjAttribute('vertical-align'),
@@ -58,7 +54,14 @@ class Section extends Component {
         paddingRight: mjAttribute('padding-right'),
         paddingLeft: mjAttribute('padding-left'),
         padding: mjAttribute('padding')
+      },
+      div: {
+        maxWidth: mjAttribute('parentWidth')
       }
+    }, {
+      div: this.isFullWidth() ? {} : _.cloneDeep(background),
+      table: this.isFullWidth() ? {} : _.cloneDeep(background),
+      tableFullwidth: this.isFullWidth() ? _.cloneDeep(background) : {}
     })
   }
 
@@ -66,7 +69,12 @@ class Section extends Component {
     const { mjAttribute } = this.props
 
     return (
-      <table data-legacy-background={mjAttribute('background-url')}border="0" cellPadding="0" cellSpacing="0" style={_.merge({}, this.styles.tableFullwidth, this.styles.table)}>
+      <table data-legacy-background={mjAttribute('background-url')}
+             border="0"
+             cellPadding="0"
+             cellSpacing="0"
+             data-width={mjAttribute('parentWidth')}
+             style={_.merge({}, this.styles.tableFullwidth, this.styles.table)}>
         <tbody>
           <tr>
             <td>
@@ -84,7 +92,15 @@ class Section extends Component {
 
     return (
       <div style={this.styles.div}>
-        <table className="outlook-background-fix-open" data-url={mjAttribute('background-url') || ''} data-legacy-background={fullWidth ? undefined : mjAttribute('background-url')} border="0" cellPadding="0" cellSpacing="0" data-legacy-align="center" style={this.styles.table}>
+        <table className="outlook-background-fix-open"
+               data-url={mjAttribute('background-url') || ''}
+               data-legacy-background={fullWidth ? undefined : mjAttribute('background-url')}
+               border="0"
+               cellPadding="0"
+               cellSpacing="0"
+               data-legacy-align="center"
+               data-width={mjAttribute('parentWidth')}
+               style={this.styles.table}>
           <tbody>
             <tr>
               <td style={this.styles.td}>
