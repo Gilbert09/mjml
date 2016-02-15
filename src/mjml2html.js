@@ -141,19 +141,19 @@ const internals = {
 
     $(".mj-section-outlook-open").each(function() {
       $(this).replaceWith(`<!--[if mso]>
-      <table border="0" cellpadding="0" cellspacing="0"><tr><td style="width:${parseInt($(this).data('width'))}px;">
+      <table border="0" cellpadding="0" cellspacing="0"><tr>
       <![endif]-->`)
     })
 
     $(".mj-section-outlook-line").each(function() {
       $(this).replaceWith(`<!--[if mso]>
-      </td><td style="width:${parseInt($(this).data('width'))}px;">
+      </tr><tr style="width:${parseInt($(this).data('width'))}px;">
       <![endif]-->`)
     })
 
     $(".mj-section-outlook-close").each(function() {
       $(this).replaceWith(`<!--[if mso]>
-      </td></tr></table>
+      </tr></table>
       <![endif]-->`)
     })
 

@@ -53,7 +53,8 @@ class Section extends Component {
         paddingBottom: mjAttribute('padding-bottom'),
         paddingRight: mjAttribute('padding-right'),
         paddingLeft: mjAttribute('padding-left'),
-        padding: mjAttribute('padding')
+        padding: mjAttribute('padding'),
+        textAlign: mjAttribute('text-align')
       },
       div: {
         maxWidth: mjAttribute('parentWidth')
