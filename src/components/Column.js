@@ -31,7 +31,12 @@ class Column extends Component {
         fontSize: "13",
         textAlign: "left",
         width: "100%",
-        minWidth: mjAttribute('width')
+        minWidth: mjAttribute('width'),
+        border: mjAttribute('border'),
+        borderTop: mjAttribute('border-top'),
+        borderLeft: mjAttribute('border-left'),
+        borderBottom: mjAttribute('border-bottom'),
+        borderRight: mjAttribute('border-right')
       },
       table: {
         background: mjAttribute('background-color')
@@ -65,6 +70,12 @@ class Column extends Component {
     const mjColumnClass = this.getColumnClass()
 
     this.styles = this.getStyles()
+
+    if (mjAttribute('width')) {
+      this.styles.div.width = width + "px";
+    } else {
+      this.styles.div.width = width + "%";
+    }
 
     return (
       <div style={this.styles.div} className={mjColumnClass} aria-labelledby={mjColumnClass} data-column-width={parseInt(width)}>

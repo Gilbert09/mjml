@@ -26,7 +26,7 @@ class Button extends Component {
 
   static baseStyles = {
     a: {
-      display: 'inline-block',
+      display: 'block',
       textDecoration: 'none'
     }
   };
@@ -45,7 +45,8 @@ class Button extends Component {
       table: {
         backgroundColor: mjAttribute('container-background-color'),
         border: mjAttribute('border'),
-        borderRadius: mjAttribute('border-radius')
+        borderRadius: mjAttribute('border-radius'),
+        width: mjAttribute('width')
       },
       a: {
         background: mjAttribute('background-color'),
@@ -57,7 +58,10 @@ class Button extends Component {
         fontStyle: mjAttribute('font-style'),
         fontWeight: mjAttribute('font-weight'),
         padding: mjAttribute('padding'),
-        textDecoration: mjAttribute('text-decoration')
+        textDecoration: mjAttribute('text-decoration'),
+        textTransform: mjAttribute('text-transform'),
+        lineHeight: mjAttribute('line-height'),
+        letterSpacing: mjAttribute('letter-spacing')
       }
     })
   }
@@ -86,8 +90,11 @@ class Button extends Component {
 
     this.styles = this.getStyles()
 
+    let mcEdit = mjAttribute('mc-edit');
+
     return (
       <table
+        data-mc-edit={mcEdit}
         border="0"
         cellPadding="0"
         cellSpacing="0"

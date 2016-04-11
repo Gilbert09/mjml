@@ -61,6 +61,8 @@ class Image extends Component {
   renderImage() {
     const { mjAttribute } = this.props
 
+    let mcEdit = mjAttribute('mc-edit');
+
     const img = (
       <img
         alt={mjAttribute('alt')}
@@ -68,7 +70,8 @@ class Image extends Component {
         src={mjAttribute('src')}
         style={this.styles.img}
         width={this.styles.img.maxWidth}
-        height={this.styles.img.height} />
+        height={this.styles.img.height}
+        data-mc-edit={mcEdit} />
     )
 
     if (mjAttribute('href') != '') {
@@ -88,8 +91,11 @@ class Image extends Component {
 
     this.styles = this.getStyles()
 
+    let customClassName = mjAttribute('class') || "";
+
     return (
       <table
+        className={customClassName}
         border="0"
         cellPadding="0"
         cellSpacing="0"

@@ -58,8 +58,26 @@ const internals = {
     internals.insertColumnMediaQuery($)
     internals.fixLegacyAttrs($)
     internals.fixOutlookLayout($)
+    internals.mcEditAttr($)
+    internals.mcHideAttr($)
 
     return $.html()
+  },
+
+  mcEditAttr($) {
+    $('[data-mc-edit]').each(function(i, e) {
+      let mcEdit = $(e).attr('data-mc-edit');
+
+      $(e).attr('mc:edit', mcEdit);
+      $(e).removeAttr('data-mc-edit')
+    });
+  },
+
+  mcHideAttr($) {
+    $('[data-mc-hide]').each(function(i, e) {
+      $(e).attr('mc:hideable', true);
+      $(e).removeAttr('data-mc-hide')
+    });
   },
 
   insertColumnMediaQuery($) {
@@ -193,9 +211,6 @@ const internals = {
     ${defaultStyle}
   </style>
   <!--[if !mso]><!-->
-  <style type="text/css">
-    @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,500,700,300);
-  </style>
   <style type="text/css">
     @media only screen and (max-width:480px) {
       @-ms-viewport { width:320px; }

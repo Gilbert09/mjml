@@ -12,7 +12,7 @@ import _ from 'lodash'
   attributes: {
     'align': 'left',
     'color': '#000000',
-    'font-family': 'Ubuntu, Helvetica, Arial, sans-serif',
+    'font-family': 'Helvetica, Arial, sans-serif',
     'font-size': '13px',
     'line-height': '22px',
     'padding-bottom': '10px',
@@ -40,19 +40,33 @@ class Text extends Component {
         fontStyle: mjAttribute('font-style'),
         fontWeight: mjAttribute('font-weight'),
         lineHeight: mjAttribute('line-height'),
-        textDecoration: mjAttribute('text-decoration')
+        letterSpacing: mjAttribute('letter-spacing'),
+        textDecoration: mjAttribute('text-decoration'),
+        textAlign: mjAttribute('text-align'),
+        textTransform: mjAttribute('text-transform')
       }
     })
   }
 
   render() {
-    const { mjContent } = this.props
+    const { mjContent, mjAttribute } = this.props
 
     this.styles = this.getStyles()
 
+    let customClassName = mjAttribute('class');
+
+    if (!customClassName) {
+      customClassName = "mj-content";
+    } else {
+      customClassName = customClassName + " mj-content";
+    }
+
+    let mcEdit = mjAttribute('mc-edit');
+
     return (
       <div
-        className="mj-content"
+        data-mc-edit={mcEdit}
+        className={customClassName}
         dangerouslySetInnerHTML={{ __html: mjContent() }}
         style={this.styles.div} />
     )

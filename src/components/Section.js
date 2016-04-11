@@ -57,7 +57,11 @@ class Section extends Component {
         textAlign: mjAttribute('text-align')
       },
       div: {
-        maxWidth: mjAttribute('parentWidth')
+        maxWidth: mjAttribute('parentWidth'),
+        borderLeft :mjAttribute('border-left'),
+        borderTop :mjAttribute('border-top'),
+        borderRight :mjAttribute('border-right'),
+        borderBottom :mjAttribute('border-bottom')
       }
     }, {
       div: this.isFullWidth() ? {} : _.cloneDeep(background),
@@ -69,8 +73,13 @@ class Section extends Component {
   renderFullWidthSection() {
     const { mjAttribute } = this.props
 
+    let mcEdit = mjAttribute('mc-edit');
+    let mcHide = mjAttribute('mc-hide');
+
     return (
       <table data-legacy-background={mjAttribute('background-url')}
+             data-mc-edit={mcEdit}
+             data-mc-hide={mcHide}
              border="0"
              cellPadding="0"
              cellSpacing="0"
@@ -91,27 +100,46 @@ class Section extends Component {
     const { renderWrappedOutlookChildren, mjAttribute } = this.props
     const fullWidth = this.isFullWidth()
 
+    let className = '';
+
+    let customClassName = mjAttribute('class');
+    let noOutlookFix = mjAttribute('no-outlook-fix');
+
+    if (customClassName) {
+      className += customClassName;
+    }
+
+    if (!noOutlookFix) {
+      className += " outlook-background-fix-open"
+    }
+
+    let mcEdit = mjAttribute('mc-edit');
+    let mcHide = mjAttribute('mc-hide');
+
     return (
-      <div style={this.styles.div}>
-        <table className="outlook-background-fix-open"
-               data-url={mjAttribute('background-url') || ''}
-               data-legacy-background={fullWidth ? undefined : mjAttribute('background-url')}
-               border="0"
-               cellPadding="0"
-               cellSpacing="0"
-               data-legacy-align="center"
-               data-width={mjAttribute('parentWidth')}
-               style={this.styles.table}>
-          <tbody>
+        <div style={this.styles.div} data-mc-edit={mcEdit} className={mjAttribute('class') + '-div' || ''}>
+          <table className={className}
+                 data-url={mjAttribute('background-url') || ''}
+                 data-legacy-background={fullWidth ? undefined : mjAttribute('background-url')}
+                 data-mc-edit={mcEdit}
+                 data-mc-hide={mcHide}
+                 border="0"
+                 cellPadding="0"
+                 cellSpacing="0"
+                 data-legacy-align="center"
+                 data-width={mjAttribute('parentWidth')}
+                 style={this.styles.table}>
+            <tbody>
             <tr>
               <td style={this.styles.td}>
                 {renderWrappedOutlookChildren()}
               </td>
             </tr>
-          </tbody>
-        </table>
-      </div>
+            </tbody>
+          </table>
+        </div>
     )
+
   }
 
   render() {
