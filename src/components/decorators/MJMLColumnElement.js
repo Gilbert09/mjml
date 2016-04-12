@@ -28,7 +28,7 @@ function createComponent(ComposedComponent, defaultAttributes) {
 
       return (
         <tr>
-          <td style={this.styles.td} data-legacy-align={mjAttribute('align')}>
+          <td style={this.styles.td} data-legacy-align={mjAttribute('align')} className={mjAttribute('class') + '-column'}>
             <ComposedComponent {...this.props} />
           </td>
         </tr>
