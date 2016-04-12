@@ -84,6 +84,7 @@ class Section extends Component {
              cellPadding="0"
              cellSpacing="0"
              data-width={mjAttribute('parentWidth')}
+             className={mjAttribute('class') + '-table' || ''}
              style={_.merge({}, this.styles.tableFullwidth, this.styles.table)}>
         <tbody>
           <tr>
