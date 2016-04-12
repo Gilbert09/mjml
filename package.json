@@ -7,7 +7,8 @@
     "test": "mocha --compilers js:babel-register",
     "compile": "babel src/ --out-dir lib/ --source-maps && mv lib/mjml.js lib/mjml",
     "prepublish": "npm run compile",
-    "lint": "eslint src test"
+    "lint": "eslint src test",
+	"build": "babel src/ --out-dir lib/ --source-maps"
   },
   "engine": {
     "node": ">= 4.2.0"
