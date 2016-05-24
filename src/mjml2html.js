@@ -58,27 +58,27 @@ const internals = {
     internals.insertColumnMediaQuery($)
     internals.fixLegacyAttrs($)
     internals.fixOutlookLayout($)
-    internals.mcEditAttr($)
-    internals.mcHideAttr($)
+    //internals.mcEditAttr($)
+    //internals.mcHideAttr($)
 
     return $.html()
   },
 
-  mcEditAttr($) {
-    $('[data-mc-edit]').each(function(i, e) {
-      let mcEdit = $(e).attr('data-mc-edit');
-
-      $(e).attr('mc:edit', mcEdit);
-      $(e).removeAttr('data-mc-edit')
-    });
-  },
-
-  mcHideAttr($) {
-    $('[data-mc-hide]').each(function(i, e) {
-      $(e).attr('mc:hideable', true);
-      $(e).removeAttr('data-mc-hide')
-    });
-  },
+  // mcEditAttr($) {
+  //   $('[data-mc-edit]').each(function(i, e) {
+  //     let mcEdit = $(e).attr('data-mc-edit');
+  //
+  //     $(e).attr('mc:edit', mcEdit);
+  //     $(e).removeAttr('data-mc-edit')
+  //   });
+  // },
+  //
+  // mcHideAttr($) {
+  //   $('[data-mc-hide]').each(function(i, e) {
+  //     $(e).attr('mc:hideable', true);
+  //     $(e).removeAttr('data-mc-hide')
+  //   });
+  // },
 
   insertColumnMediaQuery($) {
     const mediaQuery = $(`<style type="text/css">
