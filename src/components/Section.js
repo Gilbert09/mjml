@@ -61,7 +61,8 @@ class Section extends Component {
         borderLeft :mjAttribute('border-left'),
         borderTop :mjAttribute('border-top'),
         borderRight :mjAttribute('border-right'),
-        borderBottom :mjAttribute('border-bottom')
+        borderBottom :mjAttribute('border-bottom'),
+        border :mjAttribute('border')
       }
     }, {
       div: this.isFullWidth() ? {} : _.cloneDeep(background),

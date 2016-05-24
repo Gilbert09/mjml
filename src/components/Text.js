@@ -43,7 +43,8 @@ class Text extends Component {
         letterSpacing: mjAttribute('letter-spacing'),
         textDecoration: mjAttribute('text-decoration'),
         textAlign: mjAttribute('text-align'),
-        textTransform: mjAttribute('text-transform')
+        textTransform: mjAttribute('text-transform'),
+        border: mjAttribute('border')
       }
     })
   }
